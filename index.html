@@ -1,63 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#100d19" />
-  <meta name="description" content="An unofficial fan-run vote for which currencies should make it to GTA VI. Nominate your favorite, make your case, and vote." />
-  <title>Vice Tender | GTA VI Currency Vote</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Vote for the currencies you'd like to see in GTA VI. An independent, community-run fan poll.">
+  <title>Vice Tender | GTA VI Community Currency Vote</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="top-ticker" aria-label="Community campaign">
-    <div class="ticker-inner"><span>LEONIDA COMMUNITY NETWORK</span><span class="ticker-star">✳</span><span>YOUR CURRENCY. YOUR VOTE.</span><span class="ticker-star">✳</span><span>UNOFFICIAL FAN PROJECT</span></div>
-  </div>
+<body id="top">
   <header class="site-header">
-    <a href="#top" class="brand" aria-label="Vice Tender home"><span class="brand-mark">VI<span class="mark-slash">/</span></span><span class="brand-text">VICE<br/><b>TENDER</b></span></a>
-    <nav class="header-nav" aria-label="Main navigation"><a href="#leaderboard">Leaderboard</a><a href="#how-it-works">How it works</a></nav>
-    <button class="header-cta js-open-modal" type="button">SUBMIT A CURRENCY <span aria-hidden="true">↗</span></button>
-  </header>
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-noise" aria-hidden="true"></div>
-      <div class="sun" aria-hidden="true"></div>
-      <div class="hero-water" aria-hidden="true"></div>
-      <svg class="palm palm-left" viewBox="0 0 410 470" aria-hidden="true"><path d="M25 495 Q110 270 162 85" stroke="currentColor" stroke-width="19" fill="none"/><path d="M156 99 Q60 28 0 111 Q100 84 156 99Z M157 97 Q83 -5 25 7 Q120 41 157 97Z M159 95 Q205 -28 311 24 Q217 40 159 95Z M158 101 Q295 42 402 106 Q288 91 158 101Z M156 101 Q252 123 312 231 Q217 180 156 101Z M154 102 Q106 159 104 262 Q88 176 154 102Z" fill="currentColor"/></svg>
-      <svg class="palm palm-right" viewBox="0 0 410 470" aria-hidden="true"><path d="M25 495 Q110 270 162 85" stroke="currentColor" stroke-width="19" fill="none"/><path d="M156 99 Q60 28 0 111 Q100 84 156 99Z M157 97 Q83 -5 25 7 Q120 41 157 97Z M159 95 Q205 -28 311 24 Q217 40 159 95Z M158 101 Q295 42 402 106 Q288 91 158 101Z M156 101 Q252 123 312 231 Q217 180 156 101Z M154 102 Q106 159 104 262 Q88 176 154 102Z" fill="currentColor"/></svg>
-      <div class="hero-content">
-        <div class="eyebrow"><span class="blink-dot"></span> AN UNOFFICIAL GTA VI FAN VOTE <span class="eyebrow-line"></span> EST. 2026</div>
-        <h1 id="hero-title">WHAT'S THE<br/><em>CURRENCY</em><br/>OF <span class="outlined">VICE?</span></h1>
-        <p class="hero-desc">Bitcoin? Dogecoin? Your favorite memecoin? Make the case for the currency you want to see in GTA VI. The community decides who climbs the ranks.</p>
-        <div class="hero-actions"><button class="btn-primary js-open-modal" type="button">NOMINATE A CURRENCY <span>↗</span></button><a class="btn-ghost" href="#leaderboard">EXPLORE THE LEADERBOARD <span>↓</span></a></div>
+    <div class="header-inner">
+      <a href="#top" class="brand" aria-label="Vice Tender home">
+        <span class="brand-mark" aria-hidden="true">VI<span>✦</span></span>
+        <span class="brand-divider"></span>
+        <span class="brand-text">Vice Tender<small>Community currency vote</small></span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="#top">HOME</a>
+        <a href="#leaderboard">CURRENCIES</a>
+        <a href="#how-it-works">HOW IT WORKS</a>
+      </nav>
+      <div class="header-actions">
+        <span class="header-status">UNOFFICIAL FAN PROJECT</span>
+        <button class="header-cta js-open-modal" type="button">Submit currency <span aria-hidden="true">↗</span></button>
       </div>
-      <div class="hero-side-label" aria-hidden="true">WELCOME TO LEONIDA // 001</div>
-      <div class="hero-bottom"><span>FAN CAMPAIGN / COMMUNITY POLL</span><span>SCROLL TO EXPLORE <span class="down-arrow">↓</span></span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="hero-live" aria-hidden="true"></span> GTA VI <span class="eyebrow-sep">/</span> COMMUNITY POLL <span class="eyebrow-line"></span> 2026</div>
+        <h1 id="hero-title">YOUR CITY.<br>YOUR <span>CURRENCY.</span></h1>
+        <p class="hero-desc">Which currency deserves a place in Grand Theft Auto VI? Nominate a coin, back your favorite, and see what the community chooses.</p>
+        <div class="hero-actions">
+          <button class="btn-primary js-open-modal" type="button">Submit a currency <span aria-hidden="true">↗</span></button>
+          <a class="btn-ghost" href="#leaderboard">Explore the votes <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="hero-issue"><span>01 / 03</span><span>THE COMMUNITY DECIDES</span></div>
+      <div class="hero-bottom"><span>VICE TENDER / GTA VI FAN VOTE</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
     </section>
 
-    <section class="info-strip" aria-label="Voting status">
-      <div class="info-stat"><span class="stat-value" id="stat-currencies">06</span><span class="stat-label">CURRENCIES NOMINATED</span></div>
-      <div class="stat-divider"></div>
-      <div class="info-stat"><span class="stat-value" id="stat-votes">0</span><span class="stat-label">COMMUNITY VOTES</span></div>
-      <div class="stat-divider"></div>
-      <div class="info-stat stat-long"><span class="stat-icon">◉</span><div><strong>THE PEOPLE HAVE A SAY</strong><span class="stat-label">COMMUNITY-RUN. NOT AFFILIATED WITH ROCKSTAR.</span></div></div>
+    <section class="info-strip" aria-label="Community voting statistics">
+      <div class="info-strip-inner">
+        <div class="info-stat"><span class="stat-value" id="stat-currencies">06</span><span class="stat-label">CURRENCIES<br>NOMINATED</span></div>
+        <span class="stat-divider" aria-hidden="true"></span>
+        <div class="info-stat"><span class="stat-value" id="stat-votes">0</span><span class="stat-label">COMMUNITY<br>VOTES</span></div>
+        <span class="stat-divider last-divider" aria-hidden="true"></span>
+        <div class="info-stat stat-long"><span class="status-indicator" aria-hidden="true"></span><div><strong>COMMUNITY-POWERED</strong><span class="stat-label">INDEPENDENT GTA VI FAN CAMPAIGN</span></div></div>
+      </div>
     </section>
 
     <section class="leaderboard-section section-pad" id="leaderboard">
       <div class="section-head">
-        <div><div class="section-kicker"><span class="mini-cross">✳</span> THE COMMUNITY HAS SPOKEN</div><h2>THE <em>LEADERBOARD.</em></h2><p>Pick your favorite. Cast your vote. Move it up the ranks.</p></div>
-        <button class="outline-cta js-open-modal" type="button">+ SUBMIT YOUR PICK</button>
+        <div>
+          <div class="section-kicker">THE COMMUNITY'S CHOICE <span aria-hidden="true">/</span> LIVE RANKINGS</div>
+          <h2>Currency <span>leaderboard</span></h2>
+          <p>Discover the nominations. Vote for the currencies you want to see in Leonida.</p>
+        </div>
+        <button class="outline-cta js-open-modal" type="button">+ Submit your pick</button>
       </div>
-      <div class="filter-row"><div class="filters" role="group" aria-label="Filter currencies"><button type="button" class="filter active" data-filter="all">ALL CURRENCIES</button><button type="button" class="filter" data-filter="crypto">CRYPTO</button><button type="button" class="filter" data-filter="memecoin">MEMECOINS</button><button type="button" class="filter" data-filter="fiat">FIAT</button></div><div class="filter-tools"><label class="search-wrapper"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search currencies..." aria-label="Search currencies" /></label><select id="sort" aria-label="Sort currencies"><option value="top">MOST VOTED</option><option value="newest">NEWEST</option><option value="name">A TO Z</option></select></div></div>
-      <div class="mode-notice" id="mode-notice"><span class="notice-dot"></span><span><b>Preview mode.</b> Votes and submissions save in this browser only. Connect Supabase to make them public.</span></div>
+      <div class="filter-row">
+        <div class="filters" role="group" aria-label="Filter currencies">
+          <button type="button" class="filter active" data-filter="all">All currencies</button>
+          <button type="button" class="filter" data-filter="crypto">Crypto</button>
+          <button type="button" class="filter" data-filter="memecoin">Memecoins</button>
+          <button type="button" class="filter" data-filter="fiat">Fiat</button>
+        </div>
+        <div class="filter-tools">
+          <label class="search-wrapper"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="Search currencies" aria-label="Search currencies"></label>
+          <select id="sort" aria-label="Sort currencies"><option value="top">Most voted</option><option value="newest">Newest</option><option value="name">A to Z</option></select>
+        </div>
+      </div>
+      <div class="mode-notice" id="mode-notice"><span class="notice-dot" aria-hidden="true"></span><span><b>Preview mode.</b> Votes and submissions save in this browser only. Connect Supabase to make them public.</span></div>
       <div id="currency-list" class="currency-list" aria-live="polite"></div>
-      <div class="list-bottom"><span id="list-counter">SHOWING 6 CURRENCIES</span><button class="text-link js-open-modal" type="button">DON'T SEE YOUR PICK? SUBMIT IT <span>↗</span></button></div>
+      <div class="list-bottom"><span id="list-counter">SHOWING 6 CURRENCIES</span><button class="text-link js-open-modal" type="button">Don't see your currency? Submit it <span aria-hidden="true">↗</span></button></div>
     </section>
 
-    <section class="callout-section" id="how-it-works"><div class="callout-orbit" aria-hidden="true">✳</div><div class="callout-text"><span class="section-kicker">THE PROCESS IS SIMPLE</span><h2>THE NEXT BIG<br/><em>THING STARTS HERE.</em></h2><p>Nominate any real-world currency, cryptocurrency, or memecoin. Give it a name, ticker, and reason it belongs in the world of GTA VI. Then get the community behind it.</p><div class="steps"><div><span>01 /</span><strong>SUBMIT</strong><small>Nominate your pick</small></div><div><span>02 /</span><strong>VOTE</strong><small>Support your favorites</small></div><div><span>03 /</span><strong>CLIMB</strong><small>Rise up the leaderboard</small></div></div><button type="button" class="btn-primary js-open-modal">PUT YOUR CURRENCY ON THE MAP <span>↗</span></button></div><div class="callout-visual" aria-hidden="true"><div class="disc disc-outer"><div class="disc disc-inner"><div class="big-vi">VI</div></div></div><span class="disc-top">LEONIDA FINANCIAL DISTRICT</span><span class="disc-bottom">PEOPLE'S CHOICE / 2026</span></div></section>
+    <section class="callout-section" id="how-it-works">
+      <div class="callout-inner">
+        <div class="callout-intro"><span class="section-kicker">GET INVOLVED</span><h2>Have a currency<br>in <span>mind?</span></h2><p>Every nomination starts with one idea. Put yours on the ballot, tell the community why it fits GTA VI, and rally support.</p><button class="btn-primary js-open-modal" type="button">Make a nomination <span aria-hidden="true">↗</span></button></div>
+        <div class="steps" aria-label="How it works">
+          <div class="step"><span class="step-number">01</span><div><strong>Submit</strong><p>Choose a currency, add its ticker, and make your case.</p></div><span class="step-arrow" aria-hidden="true">↗</span></div>
+          <div class="step"><span class="step-number">02</span><div><strong>Vote</strong><p>Find a currency you support and cast your vote.</p></div><span class="step-arrow" aria-hidden="true">↗</span></div>
+          <div class="step"><span class="step-number">03</span><div><strong>Rise</strong><p>Watch the community leaderboard take shape.</p></div><span class="step-arrow" aria-hidden="true">↗</span></div>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer"><div class="footer-brand"><span class="footer-logo">VI<span>/</span></span><div><strong>VICE TENDER</strong><small>THE UNOFFICIAL GTA VI CURRENCY VOTE.</small></div></div><p>Fan-made concept. Not affiliated with, sponsored by, or endorsed by Rockstar Games or Take-Two Interactive. Voting does not influence official game content.</p><a href="#top">BACK TO TOP ↑</a></footer>
-  <dialog id="submit-modal" class="submit-modal" aria-labelledby="modal-title"><form id="submit-form" method="dialog" novalidate><div class="modal-head"><div><span class="section-kicker">GET ON THE BALLOT</span><h2 id="modal-title">NOMINATE A <em>CURRENCY.</em></h2></div><button class="close-modal" type="button" aria-label="Close submission form">×</button></div><p class="modal-desc">Think it belongs in GTA VI? Put it forward. Make your pitch.</p><div class="form-grid"><label class="field">CURRENCY NAME <span>*</span><input name="name" maxlength="60" placeholder="e.g. Dogecoin" required /></label><label class="field">TICKER <span>*</span><input name="ticker" maxlength="15" placeholder="e.g. DOGE" required /></label><label class="field">CURRENCY TYPE <span>*</span><select name="type" required><option value="crypto">Cryptocurrency</option><option value="memecoin">Memecoin</option><option value="fiat">Traditional currency</option></select></label><label class="field">CHAIN / NETWORK <small>(OPTIONAL)</small><input name="chain" maxlength="35" placeholder="e.g. Solana" /></label><label class="field wide">CONTRACT ADDRESS <small>(OPTIONAL)</small><input name="contract_address" maxlength="160" placeholder="If it's a token, paste its contract address" /></label><label class="field wide">WHY SHOULD IT BE IN GTA VI? <span>*</span><textarea name="pitch" maxlength="280" minlength="12" rows="3" required placeholder="Give the community a reason to vote for it..."></textarea><span class="char-count"><span id="pitch-count">0</span>/280</span></label></div><div class="form-bottom"><span id="form-error" role="alert"></span><button type="submit" class="btn-primary">SUBMIT NOMINATION <span>↗</span></button></div><p class="fine-print" id="form-footnote">Preview submissions appear in your browser. With a live database, submissions enter a moderation queue before appearing publicly.</p></form></dialog>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><span class="footer-mark">VI✦</span><span>VICE TENDER<small>COMMUNITY CURRENCY VOTE</small></span></div>
+      <div class="footer-links"><a href="#top">Home</a><a href="#leaderboard">Currencies</a><a href="#how-it-works">How it works</a></div>
+      <div class="footer-bottom"><p>Independent fan project. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Votes do not affect official GTA VI development or content.</p><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <dialog id="submit-modal" class="submit-modal" aria-labelledby="modal-title">
+    <form id="submit-form" method="dialog" novalidate>
+      <div class="modal-head"><div><span class="section-kicker">CURRENCY NOMINATION</span><h2 id="modal-title">Submit a <span>currency</span></h2></div><button class="close-modal" type="button" aria-label="Close nomination form">×</button></div>
+      <p class="modal-desc">Think it belongs in GTA VI? Tell the community why.</p>
+      <div class="form-grid">
+        <label class="field">Currency name <span>*</span><input name="name" maxlength="60" placeholder="e.g. Dogecoin" required></label>
+        <label class="field">Ticker <span>*</span><input name="ticker" maxlength="15" placeholder="e.g. DOGE" required></label>
+        <label class="field">Currency type <span>*</span><select name="type" required><option value="crypto">Cryptocurrency</option><option value="memecoin">Memecoin</option><option value="fiat">Traditional currency</option></select></label>
+        <label class="field">Chain / Network <small>(optional)</small><input name="chain" maxlength="35" placeholder="e.g. Solana"></label>
+        <label class="field wide">Contract address <small>(optional)</small><input name="contract_address" maxlength="160" placeholder="Token contract address"></label>
+        <label class="field wide">Why should it be in GTA VI? <span>*</span><textarea name="pitch" maxlength="280" minlength="12" rows="3" required placeholder="Give the community a reason to vote for it..."></textarea><span class="char-count"><span id="pitch-count">0</span>/280</span></label>
+      </div>
+      <div class="form-bottom"><span id="form-error" role="alert"></span><button type="submit" class="btn-primary">Submit nomination <span aria-hidden="true">↗</span></button></div>
+      <p class="fine-print" id="form-footnote">Preview submissions appear in your browser. With a live database, submissions enter a moderation queue before appearing publicly.</p>
+    </form>
+  </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="config.js"></script>
   <script src="app.js"></script>
