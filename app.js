@@ -98,7 +98,7 @@
         const proposer = elt('div', 'featured-proposer', 'Proposed by ');
         proposer.append(elt('strong', '', 'Vice Coast RP'), elt('span', '', ' · Fictional server'));
         details.append(proposer, elt('p', 'featured-description', currency.pitch));
-        details.append(elt('p', 'featured-tally-note', 'Simulated community reactions for this roleplay concept. Not real votes.'));
+        details.append(elt('p', 'featured-tally-note', 'Example reaction counts for this fictional roleplay concept. These are not real player votes.'));
         const buttons = elt('div', 'featured-votes');
         const up = elt('button', 'featured-vote-button upvote' + (votesGiven.has(currency.id) ? ' selected' : ''));
         up.type = 'button';
@@ -143,7 +143,7 @@
     $('#list-counter').textContent = `SHOWING ${selected.length} ${selected.length === 1 ? 'CURRENCY' : 'CURRENCIES'}`;
     $('#stat-currencies').textContent = numberFormat.format(currencies.length).padStart(2, '0');
     $('#stat-votes').textContent = numberFormat.format(currencies.reduce((sum, c) => sum + Number(c.votes_count || 0) + (!live ? Number(c.downvotes_count || 0) : 0), 0));
-    $('#stat-votes-label').textContent = live ? 'PLAYER VOTES' : 'SIMULATED REACTIONS';
+    $('#stat-votes-label').textContent = live ? 'PLAYER VOTES' : 'REACTIONS';
   }
 
   function apiHeaders(withJSON = false) {
@@ -171,7 +171,7 @@
     downVotesGiven.add(currency.id);
     storeJSON('downvotes-given', [...downVotesGiven]);
     render();
-    announce('Downvote saved in this browser. Reaction totals are simulated.');
+    announce('Downvote saved in this browser. Counts are illustrative.');
   }
   async function castVote(currency, button) {
     if (votesGiven.has(currency.id) || downVotesGiven.has(currency.id)) return;
