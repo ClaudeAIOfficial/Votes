@@ -351,3 +351,10 @@ button:disabled { cursor: not-allowed; }
   .motion-ready .reveal, .motion-ready .currency-card.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Featured roleplay currency, without category tabs. */
+.currency-list{grid-template-columns:minmax(0,1fr);max-width:760px;width:100%;margin:0 auto;gap:0}
+.currency-card{min-height:315px}
+.section-head{margin-bottom:32px}
+.list-bottom{max-width:760px;margin-left:auto;margin-right:auto}
+@media(max-width:760px){.currency-list{max-width:100%}.currency-card{min-height:290px}}

@@ -79,16 +79,11 @@ $$;
 revoke all on function public.cast_vote(uuid, uuid) from public;
 grant execute on function public.cast_vote(uuid, uuid) to anon, authenticated;
 
--- OPTIONAL: start with an empty ballot, or uncomment this sample seed section.
--- These nominees will enter with ZERO votes, unlike preview-mode demo numbers.
+-- OPTIONAL: seed one GTA Coin proposal in a newly configured Supabase project.
+-- Existing previously approved proposals must be reviewed separately.
 /*
 insert into public.currency_nominations (name, ticker, type, chain, pitch, status)
-values
-  ('Dogecoin', 'DOGE', 'memecoin', 'Dogecoin', 'The original internet dog money belongs on the streets of Leonida.', 'approved'),
-  ('Bitcoin', 'BTC', 'crypto', 'Bitcoin', 'Imagine the ATMs and shady beachside deals.', 'approved'),
-  ('Pepe', 'PEPE', 'memecoin', 'Ethereum', 'An internet legend that could be a funny in-game currency.', 'approved'),
-  ('Solana', 'SOL', 'crypto', 'Solana', 'Fast transactions and chaotic memecoins fit Leonida.', 'approved'),
-  ('US Dollar', 'USD', 'fiat', null, 'Sometimes you just want actual cash.', 'approved'),
-  ('Ethereum', 'ETH', 'crypto', 'Ethereum', 'Smart contracts and questionable side hustles.', 'approved')
+values ('GTA Coin', 'GTA', 'crypto', 'Vice City Roleplay',
+'A proposed in-server currency for roleplay jobs, businesses, shopping, and trading.', 'approved')
 on conflict do nothing;
 */

@@ -4,14 +4,9 @@
   const config = window.VICE_CONFIG || {};
   const live = Boolean(config.supabaseUrl && config.supabaseAnonKey);
   const baseUrl = String(config.supabaseUrl || '').replace(/\/+$/, '');
-  const storagePrefix = 'vicetender-v1:';
+  const storagePrefix = 'vicetender-v2:';
   const sampleCurrencies = [
-    { id: 'demo-doge', name: 'Dogecoin', ticker: 'DOGE', type: 'memecoin', chain: 'Dogecoin', pitch: 'A playful currency for player-owned businesses, community events, and jobs in Vice City roleplay.', votes_count: 0, created_at: '2026-11-10T12:00:00Z' },
-    { id: 'demo-btc', name: 'Bitcoin', ticker: 'BTC', type: 'crypto', chain: 'Bitcoin', pitch: 'A high-value digital currency for player trading and in-character financial storylines.', votes_count: 0, created_at: '2026-11-09T12:00:00Z' },
-    { id: 'demo-pepe', name: 'Pepe', ticker: 'PEPE', type: 'memecoin', chain: 'Ethereum', pitch: 'A meme currency for player-led markets and roleplay community events.', votes_count: 0, created_at: '2026-11-08T12:00:00Z' },
-    { id: 'demo-sol', name: 'Solana', ticker: 'SOL', type: 'crypto', chain: 'Solana', pitch: 'A fast digital economy for player transactions and in-server trading.', votes_count: 0, created_at: '2026-11-07T12:00:00Z' },
-    { id: 'demo-usd', name: 'US Dollar', ticker: 'USD', type: 'fiat', chain: '', pitch: 'A familiar cash option for everyday in-character purchases, wages, and businesses.', votes_count: 0, created_at: '2026-11-06T12:00:00Z' },
-    { id: 'demo-eth', name: 'Ethereum', ticker: 'ETH', type: 'crypto', chain: 'Ethereum', pitch: 'An alternative digital asset for in-character trading and fictional businesses.', votes_count: 0, created_at: '2026-11-05T12:00:00Z' }
+    { id: 'demo-gta-coin', name: 'GTA Coin', ticker: 'GTA', type: 'crypto', chain: 'Vice City Roleplay', pitch: 'A proposed in-server currency for GTA-inspired roleplay economies. Players could use GTA Coin for jobs, shopping, businesses, and trading.', votes_count: 0, created_at: '2026-11-14T12:00:00Z' }
   ];
 
   const $ = (selector) => document.querySelector(selector);
@@ -20,9 +15,6 @@
   const form = $('#submit-form');
   const toast = $('#toast');
   let currencies = [];
-  let filter = 'all';
-  let sort = 'top';
-  let search = '';
   let toastTimer;
 
   function storedJSON(key, fallback) {
@@ -76,18 +68,11 @@
     return div;
   }
   function render() {
-    const selected = currencies
-      .filter((currency) => filter === 'all' || currency.type === filter)
-      .filter((currency) => [currency.name, currency.ticker, currency.chain, currency.pitch].join(' ').toLowerCase().includes(search));
-    selected.sort((a, b) => {
-      if (sort === 'newest') return new Date(b.created_at) - new Date(a.created_at);
-      if (sort === 'name') return a.name.localeCompare(b.name);
-      return Number(b.votes_count || 0) - Number(a.votes_count || 0) || a.name.localeCompare(b.name);
-    });
+    const selected = [...currencies].sort((a, b) => Number(b.votes_count || 0) - Number(a.votes_count || 0) || a.name.localeCompare(b.name));
     listEl.replaceChildren();
     if (selected.length === 0) {
       const empty = elt('div', 'empty-state');
-      empty.append(elt('strong', '', 'NO PROPOSALS FOUND.'), elt('span', '', search ? 'Try another search or submit a new one.' : 'No proposals in this category yet. Suggest the first one.'));
+      empty.append(elt('strong', '', 'NO PROPOSALS YET.'), elt('span', '', 'Be the first to suggest a roleplay currency.'));
       listEl.append(empty);
     }
     for (let index = 0; index < selected.length; index++) {
@@ -172,13 +157,6 @@
   $('.close-modal').addEventListener('click', () => modal.close());
   modal.addEventListener('click', (event) => { if (event.target === modal) modal.close(); });
   form.elements.pitch.addEventListener('input', () => { $('#pitch-count').textContent = form.elements.pitch.value.length; });
-  document.querySelectorAll('.filter').forEach((btn) => btn.addEventListener('click', () => {
-    filter = btn.dataset.filter;
-    document.querySelectorAll('.filter').forEach((el) => el.classList.toggle('active', el === btn));
-    render();
-  }));
-  $('#search').addEventListener('input', (event) => { search = event.target.value.trim().toLowerCase(); render(); });
-  $('#sort').addEventListener('change', (event) => { sort = event.target.value; render(); });
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     $('#form-error').textContent = '';
@@ -217,9 +195,6 @@
         custom.push(nomination);
         storeJSON('demo-nominations', custom);
         currencies.push(nomination);
-        filter = 'all'; sort = 'newest'; search = '';
-        document.querySelectorAll('.filter').forEach((el) => el.classList.toggle('active', el.dataset.filter === 'all'));
-        $('#sort').value = 'newest'; $('#search').value = '';
         render();
         announce(`${name} proposal saved in this browser!`);
       }
