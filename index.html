@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#170a29">
   <meta name="description" content="Vote for the currencies you'd like to see in GTA VI. An independent, community-run fan poll.">
-  <title>Vice Tender | GTA VI Community Currency Vote</title>
+  <title>Vice Tender | Rockstar Games-inspired GTA VI Fan Currency Vote</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,9 +13,9 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#top" class="brand" aria-label="Vice Tender home">
-        <span class="brand-mark" aria-hidden="true">VI<span>✦</span></span>
+        <span class="brand-logo" aria-hidden="true"><img src="rockstar-mark.svg" alt=""></span>
         <span class="brand-divider"></span>
-        <span class="brand-text">Vice Tender<small>Community currency vote</small></span>
+        <span class="brand-text">ROCKSTAR GAMES<small>VICE TENDER · UNOFFICIAL FAN VOTE</small></span>
       </a>
       <nav class="header-nav" aria-label="Main navigation">
         <a href="#top">HOME</a>
@@ -33,17 +33,19 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-art" aria-hidden="true"></div>
       <div class="hero-content">
-        <div class="hero-eyebrow"><span class="hero-live" aria-hidden="true"></span> GTA VI <span class="eyebrow-sep">/</span> COMMUNITY POLL <span class="eyebrow-line"></span> 2026</div>
+        <div class="hero-eyebrow"><img class="eyebrow-logo" src="rockstar-mark.svg" alt="" aria-hidden="true"><span class="hero-live" aria-hidden="true"></span> GTA VI <span class="eyebrow-sep">/</span> COMMUNITY POLL <span class="eyebrow-line"></span> 2026</div>
         <h1 id="hero-title">YOUR CITY.<br>YOUR <span>CURRENCY.</span></h1>
-        <p class="hero-desc">Which currency deserves a place in Grand Theft Auto VI? Nominate a coin, back your favorite, and see what the community chooses.</p>
+        <p class="hero-desc">Which currency deserves a place in Grand Theft Auto VI? Nominate a coin, back your favorite, and see what the community chooses.</p><p class="hero-fan-note">UNOFFICIAL COMMUNITY POLL · NOT AFFILIATED WITH ROCKSTAR GAMES</p>
         <div class="hero-actions">
           <button class="btn-primary js-open-modal" type="button">Submit a currency <span aria-hidden="true">↗</span></button>
           <a class="btn-ghost" href="#leaderboard">Explore the votes <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <div class="hero-issue"><span>01 / 03</span><span>THE COMMUNITY DECIDES</span></div>
-      <div class="hero-bottom"><span>VICE TENDER / GTA VI FAN VOTE</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
+      <div class="hero-issue"><img src="rockstar-mark.svg" alt="" aria-hidden="true"><span class="hero-issue-brand">ROCKSTAR GAMES</span><span>VICE CITY FAN EDITION</span></div>
+      <div class="hero-bottom"><span>ROCKSTAR GAMES-INSPIRED / UNOFFICIAL GTA VI FAN VOTE</span><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span></div>
     </section>
+
+    <div class="vice-ribbon" aria-hidden="true"><span>V</span><span>I</span><span>C</span><span>E</span><span> C</span><span>I</span><span>T</span><span>Y</span><img src="rockstar-mark.svg" alt=""></div>
 
     <section class="info-strip" aria-label="Community voting statistics">
       <div class="info-strip-inner">
@@ -58,7 +60,7 @@
     <section class="leaderboard-section section-pad" id="leaderboard">
       <div class="section-head">
         <div>
-          <div class="section-kicker">THE COMMUNITY'S CHOICE <span aria-hidden="true">/</span> LIVE RANKINGS</div>
+          <div class="section-kicker"><img class="section-mark" src="rockstar-mark.svg" alt="" aria-hidden="true"> THE COMMUNITY'S CHOICE <span aria-hidden="true">/</span> LIVE RANKINGS</div>
           <h2>Currency <span>leaderboard</span></h2>
           <p>Discover the nominations. Vote for the currencies you want to see in Leonida.</p>
         </div>
@@ -95,7 +97,7 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand"><span class="footer-mark">VI✦</span><span>VICE TENDER<small>COMMUNITY CURRENCY VOTE</small></span></div>
+      <div class="footer-brand"><img class="footer-rockstar" src="rockstar-mark.svg" alt="" aria-hidden="true"><span>ROCKSTAR GAMES<small>VICE TENDER · UNOFFICIAL FAN COMMUNITY</small></span></div>
       <div class="footer-links"><a href="#top">Home</a><a href="#leaderboard">Currencies</a><a href="#how-it-works">How it works</a></div>
       <div class="footer-bottom"><p>Independent fan project. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Votes do not affect official GTA VI development or content.</p><a href="#top">Back to top ↑</a></div>
     </div>
@@ -103,7 +105,7 @@
 
   <dialog id="submit-modal" class="submit-modal" aria-labelledby="modal-title">
     <form id="submit-form" method="dialog" novalidate>
-      <div class="modal-head"><div><span class="section-kicker">CURRENCY NOMINATION</span><h2 id="modal-title">Submit a <span>currency</span></h2></div><button class="close-modal" type="button" aria-label="Close nomination form">×</button></div>
+      <div class="modal-head"><div><span class="modal-brand"><img src="rockstar-mark.svg" alt="" aria-hidden="true"> VICE CITY / UNOFFICIAL FAN POLL</span><span class="section-kicker">CURRENCY NOMINATION</span><h2 id="modal-title">Submit a <span>currency</span></h2></div><button class="close-modal" type="button" aria-label="Close nomination form">×</button></div>
       <p class="modal-desc">Think it belongs in GTA VI? Tell the community why.</p>
       <div class="form-grid">
         <label class="field">Currency name <span>*</span><input name="name" maxlength="60" placeholder="e.g. Dogecoin" required></label>
