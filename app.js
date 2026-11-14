@@ -19,7 +19,6 @@
   const modal = $('#submit-modal');
   const form = $('#submit-form');
   const toast = $('#toast');
-  const notice = $('#mode-notice');
   let currencies = [];
   let filter = 'all';
   let sort = 'top';
@@ -157,7 +156,7 @@
       votesGiven.add(currency.id);
       storeJSON('votes-given', [...votesGiven]);
       render();
-      announce(`Vote recorded for ${currency.name}!`);
+      announce(live ? `Vote recorded for ${currency.name}!` : `Vote for ${currency.name} saved in this browser.`);
     } catch (err) {
       button.disabled = false;
       button.textContent = '↑ VOTE';
@@ -236,7 +235,6 @@
   });
 
   if (live) {
-    notice.innerHTML = '<span class="notice-dot"></span><span><b>Community vote is live.</b> New nominations appear after review. One vote per currency per browser.</span>';
     $('#form-footnote').textContent = 'Your submission enters a moderation queue before appearing on the public leaderboard.';
     listEl.append(elt('div', 'empty-state', 'LOADING CURRENCIES...'));
     fetchLive().catch((err) => {
@@ -244,7 +242,6 @@
       const error = elt('div', 'empty-state');
       error.append(elt('strong', '', 'CAN’T LOAD THE BALLOT.'), elt('span', '', err.message + ' Check your Supabase connection and SQL setup.'));
       listEl.append(error);
-      notice.textContent = 'Connection problem. Voting is temporarily unavailable.';
     });
     document.addEventListener('visibilitychange', () => { if (!document.hidden) fetchLive().catch(() => {}); });
   } else {
