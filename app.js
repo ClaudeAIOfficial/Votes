@@ -7,7 +7,7 @@
   const storagePrefix = 'vicetender-v3:';
   const sampleCurrencies = [
     { id: 'demo-gta-coin', name: 'GTA Coin', ticker: 'GTA', type: 'crypto',
-      chain: 'Vice City Roleplay', proposer: 'Vice Coast RP',
+      chain: 'UNITY RP-inspired economy', proposer: 'Community concept',
       pitch: 'A proposed in-server currency for GTA-inspired roleplay economies. Players could use GTA Coin for jobs, shopping, businesses, and trading.',
       votes_count: 286412, downvotes_count: 4738, created_at: '2026-11-14T12:00:00Z' }
   ];
@@ -93,10 +93,10 @@
         photo.height = 300;
         art.append(photo);
         const details = elt('div', 'featured-coin-details');
-        details.append(elt('div', 'featured-kicker', 'ROLEPLAY CONCEPT · FICTIONAL PROPOSAL'));
+        details.append(elt('div', 'featured-kicker', 'UNITY RP CONCEPT · FICTIONAL PROPOSAL'));
         details.append(elt('h3', 'featured-coin-title', 'GTA Coin'), elt('div', 'featured-ticker', '$GTA'));
-        const proposer = elt('div', 'featured-proposer', 'Proposed by ');
-        proposer.append(elt('strong', '', 'Vice Coast RP'), elt('span', '', ' · Fictional server'));
+        const proposer = elt('div', 'featured-proposer', 'Proposed for ');
+        proposer.append(elt('strong', '', 'UNITY RP-inspired community'), elt('span', '', ' · Independent concept'));
         details.append(proposer, elt('p', 'featured-description', currency.pitch));
         details.append(elt('p', 'featured-tally-note', 'Example reaction counts for this fictional roleplay concept. These are not real player votes.'));
         const buttons = elt('div', 'featured-votes');
