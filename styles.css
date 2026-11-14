@@ -89,7 +89,7 @@ body{background:#0c0818;color:var(--text);background-image:radial-gradient(ellip
 .notice-dot{background:#7be7ea}
 .currency-card{overflow:hidden;isolation:isolate;background:linear-gradient(149deg,#2b1c39 0%,#22162f 58%,#1b122a 100%);border:1px solid #56375e;box-shadow:0 12px 35px #0d08141a}
 .currency-card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#ec79c5,#ffb183 54%,#70dfe7);opacity:.85}
-.currency-card:after{content:"";position:absolute;right:25px;top:79px;width:74px;height:74px;background:url('rockstar-mark.svg') center/contain no-repeat;opacity:.065;pointer-events:none;z-index:0}
+.currency-card:after{content:"";position:absolute;right:25px;top:79px;width:74px;height:74px;background:url('rockstar-brand.png') center/contain no-repeat;opacity:.065;pointer-events:none;z-index:0}
 .currency-card>*{position:relative;z-index:1}
 .currency-card:hover{background:linear-gradient(149deg,#362044,#2d1939 58%,#23142f);border-color:#d179b2;box-shadow:0 14px 36px #0d061a6d}
 .currency-title h3{color:#fff5fc}
@@ -161,3 +161,18 @@ body{background:#0c0818;color:var(--text);background-image:radial-gradient(ellip
   .header-cta{padding:9px 11px;font-size:10px}
   .header-cta span{margin-left:4px}
 }
+
+/* Exact user-supplied orange Rockstar logo, applied consistently to brand placements. */
+.brand-logo{background:transparent;border:0;box-shadow:none;width:45px;height:45px}
+.brand-logo img{display:block;width:45px;height:auto;object-fit:contain;filter:none}
+.eyebrow-logo,.section-mark,.footer-rockstar,.modal-brand img{object-fit:contain;filter:none}
+.footer-rockstar{padding:0;border:0;width:45px;height:auto}
+.eyebrow-logo{border-radius:4px}
+.section-mark{border-radius:4px}
+.modal-brand img{border-radius:5px}
+.hero-issue img{border-radius:14px}
+.button-logo{height:19px;width:19px;object-fit:contain;display:inline-block;vertical-align:middle;flex:0 0 auto;border-radius:4px;filter:none}
+.header-cta{display:inline-flex;align-items:center;gap:9px}
+.btn-primary{display:inline-flex;align-items:center;gap:12px}
+@media(max-width:760px){.brand-logo{width:37px;height:37px}.brand-logo img{width:37px;height:auto}.button-logo{width:17px;height:17px}}
+@media(max-width:450px){.brand-logo{width:33px;height:33px}.brand-logo img{width:33px;height:auto}}
