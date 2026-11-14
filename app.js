@@ -4,9 +4,12 @@
   const config = window.VICE_CONFIG || {};
   const live = Boolean(config.supabaseUrl && config.supabaseAnonKey);
   const baseUrl = String(config.supabaseUrl || '').replace(/\/+$/, '');
-  const storagePrefix = 'vicetender-v2:';
+  const storagePrefix = 'vicetender-v3:';
   const sampleCurrencies = [
-    { id: 'demo-gta-coin', name: 'GTA Coin', ticker: 'GTA', type: 'crypto', chain: 'Vice City Roleplay', pitch: 'A proposed in-server currency for GTA-inspired roleplay economies. Players could use GTA Coin for jobs, shopping, businesses, and trading.', votes_count: 0, created_at: '2026-11-14T12:00:00Z' }
+    { id: 'demo-gta-coin', name: 'GTA Coin', ticker: 'GTA', type: 'crypto',
+      chain: 'Vice City Roleplay', proposer: 'Vice Coast RP',
+      pitch: 'A proposed in-server currency for GTA-inspired roleplay economies. Players could use GTA Coin for jobs, shopping, businesses, and trading.',
+      votes_count: 286412, downvotes_count: 4738, created_at: '2026-11-14T12:00:00Z' }
   ];
 
   const $ = (selector) => document.querySelector(selector);
@@ -36,6 +39,7 @@
   }
   const voterKey = getVoterKey();
   const votesGiven = new Set(storedJSON('votes-given', []));
+  const downVotesGiven = new Set(storedJSON('downvotes-given', []));
   const numberFormat = new Intl.NumberFormat('en-US');
   const categories = { crypto: 'CRYPTO', memecoin: 'MEMECOIN', fiat: 'FIAT' };
   const palettes = [
@@ -77,6 +81,43 @@
     }
     for (let index = 0; index < selected.length; index++) {
       const currency = selected[index];
+
+      if (currency.id === 'demo-gta-coin' && !live) {
+        const featured = elt('article', 'currency-card featured-coin-card');
+        featured.setAttribute('aria-label', 'GTA Coin fictional roleplay currency suggestion');
+        const art = elt('div', 'featured-coin-art');
+        const photo = elt('img', 'featured-coin-image');
+        photo.src = 'gta-coin-art.jpg';
+        photo.alt = 'Silver GTA Coin concept with GTA COIN embossed in the metal';
+        photo.width = 300;
+        photo.height = 300;
+        art.append(photo);
+        const details = elt('div', 'featured-coin-details');
+        details.append(elt('div', 'featured-kicker', 'ROLEPLAY CONCEPT · FICTIONAL PROPOSAL'));
+        details.append(elt('h3', 'featured-coin-title', 'GTA Coin'), elt('div', 'featured-ticker', '$GTA'));
+        const proposer = elt('div', 'featured-proposer', 'Proposed by ');
+        proposer.append(elt('strong', '', 'Vice Coast RP'), elt('span', '', ' · Fictional server'));
+        details.append(proposer, elt('p', 'featured-description', currency.pitch));
+        details.append(elt('p', 'featured-tally-note', 'Simulated community reactions for this roleplay concept. Not real votes.'));
+        const buttons = elt('div', 'featured-votes');
+        const up = elt('button', 'featured-vote-button upvote' + (votesGiven.has(currency.id) ? ' selected' : ''));
+        up.type = 'button';
+        up.setAttribute('aria-label', 'Upvote GTA Coin');
+        up.append(elt('span', 'vote-icon', '↑'), elt('span', 'reaction-total', numberFormat.format(currency.votes_count || 0)), elt('small', '', 'UPVOTES'));
+        up.disabled = votesGiven.has(currency.id) || downVotesGiven.has(currency.id);
+        up.addEventListener('click', () => castVote(currency, up));
+        const down = elt('button', 'featured-vote-button downvote' + (downVotesGiven.has(currency.id) ? ' selected' : ''));
+        down.type = 'button';
+        down.setAttribute('aria-label', 'Downvote GTA Coin');
+        down.append(elt('span', 'vote-icon', '↓'), elt('span', 'reaction-total', numberFormat.format(currency.downvotes_count || 0)), elt('small', '', 'DOWNVOTES'));
+        down.disabled = votesGiven.has(currency.id) || downVotesGiven.has(currency.id);
+        down.addEventListener('click', () => castDownVote(currency));
+        buttons.append(up, down);
+        details.append(buttons);
+        featured.append(art, details);
+        listEl.append(featured);
+        continue;
+      }
       const card = elt('article', 'currency-card');
       const rank = elt('div', 'rank', String(index + 1).padStart(2, '0'));
       const icon = logoFor(currency);
@@ -101,7 +142,8 @@
     }
     $('#list-counter').textContent = `SHOWING ${selected.length} ${selected.length === 1 ? 'CURRENCY' : 'CURRENCIES'}`;
     $('#stat-currencies').textContent = numberFormat.format(currencies.length).padStart(2, '0');
-    $('#stat-votes').textContent = numberFormat.format(currencies.reduce((sum, c) => sum + Number(c.votes_count || 0), 0));
+    $('#stat-votes').textContent = numberFormat.format(currencies.reduce((sum, c) => sum + Number(c.votes_count || 0) + (!live ? Number(c.downvotes_count || 0) : 0), 0));
+    $('#stat-votes-label').textContent = live ? 'PLAYER VOTES' : 'SIMULATED REACTIONS';
   }
 
   function apiHeaders(withJSON = false) {
@@ -116,11 +158,23 @@
   function loadDemo() {
     const custom = storedJSON('demo-nominations', []);
     const countOverrides = storedJSON('demo-vote-counts', {});
-    currencies = [...sampleCurrencies, ...(Array.isArray(custom) ? custom : [])].map((c) => ({ ...c, votes_count: Number(countOverrides[c.id] ?? c.votes_count) }));
+    const downOverrides = storedJSON('demo-downvote-counts', {});
+    currencies = [...sampleCurrencies, ...(Array.isArray(custom) ? custom : [])].map((c) => ({ ...c, votes_count: Number(countOverrides[c.id] ?? c.votes_count), downvotes_count: Number(downOverrides[c.id] ?? c.downvotes_count ?? 0) }));
     render();
   }
+  function castDownVote(currency) {
+    if (live || votesGiven.has(currency.id) || downVotesGiven.has(currency.id)) return;
+    const counts = storedJSON('demo-downvote-counts', {});
+    currency.downvotes_count = Number(currency.downvotes_count || 0) + 1;
+    counts[currency.id] = currency.downvotes_count;
+    storeJSON('demo-downvote-counts', counts);
+    downVotesGiven.add(currency.id);
+    storeJSON('downvotes-given', [...downVotesGiven]);
+    render();
+    announce('Downvote saved in this browser. Reaction totals are simulated.');
+  }
   async function castVote(currency, button) {
-    if (votesGiven.has(currency.id)) return;
+    if (votesGiven.has(currency.id) || downVotesGiven.has(currency.id)) return;
     button.disabled = true;
     button.textContent = 'VOTING...';
     try {
