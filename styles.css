@@ -89,7 +89,7 @@ body{background:#0c0818;color:var(--text);background-image:radial-gradient(ellip
 .notice-dot{background:#7be7ea}
 .currency-card{overflow:hidden;isolation:isolate;background:linear-gradient(149deg,#2b1c39 0%,#22162f 58%,#1b122a 100%);border:1px solid #56375e;box-shadow:0 12px 35px #0d08141a}
 .currency-card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#ec79c5,#ffb183 54%,#70dfe7);opacity:.85}
-.currency-card:after{content:"";position:absolute;right:25px;top:79px;width:74px;height:74px;background:url('rockstar-brand.png') center/contain no-repeat;opacity:.065;pointer-events:none;z-index:0}
+.currency-card:after{content:"";position:absolute;right:25px;top:79px;width:74px;height:74px;background:none;opacity:.065;pointer-events:none;z-index:0}
 .currency-card>*{position:relative;z-index:1}
 .currency-card:hover{background:linear-gradient(149deg,#362044,#2d1939 58%,#23142f);border-color:#d179b2;box-shadow:0 14px 36px #0d061a6d}
 .currency-title h3{color:#fff5fc}
@@ -176,3 +176,14 @@ body{background:#0c0818;color:var(--text);background-image:radial-gradient(ellip
 .btn-primary{display:inline-flex;align-items:center;gap:12px}
 @media(max-width:760px){.brand-logo{width:37px;height:37px}.brand-logo img{width:37px;height:auto}.button-logo{width:17px;height:17px}}
 @media(max-width:450px){.brand-logo{width:33px;height:33px}.brand-logo img{width:33px;height:auto}}
+
+/* Uploaded Rockstar logo remains exclusively in the page icon. */
+.brand{min-width:0;gap:0}
+.brand-text{font-size:18px}
+.brand-text small{margin-top:6px}
+.hero-issue{min-height:110px;min-width:210px;gap:10px}
+.currency-card:after{display:none}
+.footer-brand{gap:0}
+.modal-brand{gap:0}
+@media(max-width:760px){.brand-text{font-size:16px}}
+@media(max-width:450px){.brand-text{font-size:13px}}
