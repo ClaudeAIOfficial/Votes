@@ -494,3 +494,10 @@ body{background:#09090b;background-image:radial-gradient(ellipse 60% 500px at 90
 .toast{background:#f20d35;color:#fff}
 @media(max-width:700px){.site-header .unity-brand{gap:8px}.unity-emblem{width:34px;height:34px}.unity-name{font-size:22px}.unity-divider{height:26px;margin:0 2px}.unity-voting{font-size:17px}.unity-voting small{font-size:6.5px;letter-spacing:.5px}.vice-ribbon{gap:8px;font-size:10px;letter-spacing:1px}}
 @media(max-width:390px){.unity-name{font-size:19px}.unity-emblem{width:29px;height:29px}.unity-voting{font-size:14px}.unity-voting small{font-size:5.8px}.site-header .unity-brand{gap:6px}}
+
+/* Two featured coins shown as separate full-size cards. */
+.currency-list{max-width:760px;grid-template-columns:minmax(0,1fr);gap:22px;}
+.currency-card.featured-coin-card{max-width:760px;}
+.featured-coin-art{background:#fff;}
+.featured-coin-image{object-fit:contain;}
+@media(max-width:760px){.currency-list{gap:17px;}}

@@ -9,7 +9,11 @@
     { id: 'demo-gta-coin', name: 'GTA Coin', ticker: 'GTA', type: 'crypto',
       chain: 'UNITY RP-inspired economy', proposer: 'Community concept',
       pitch: 'A proposed in-server currency for GTA-inspired roleplay economies. Players could use GTA Coin for jobs, shopping, businesses, and trading.',
-      votes_count: 286412, downvotes_count: 4738, created_at: '2026-11-14T12:00:00Z' }
+      votes_count: 286412, downvotes_count: 4738, created_at: '2026-11-14T12:00:00Z' },
+    { id: 'demo-unity-coin', name: 'UNITY Coin', ticker: 'UNITY', type: 'crypto',
+      chain: 'UNITY RP-inspired economy', proposer: 'Community submission',
+      pitch: 'A proposed coin for roleplay jobs, shops, businesses, and trading across a UNITY RP-inspired economy.',
+      votes_count: 0, downvotes_count: 0, created_at: '2026-11-14T12:15:00Z' }
   ];
 
   const $ = (selector) => document.querySelector(selector);
@@ -82,33 +86,37 @@
     for (let index = 0; index < selected.length; index++) {
       const currency = selected[index];
 
-      if (currency.id === 'demo-gta-coin' && !live) {
+      const isGtaDemo = currency.id === 'demo-gta-coin';
+      const isUnityDemo = currency.id === 'demo-unity-coin';
+      if (!live && (isGtaDemo || isUnityDemo)) {
         const featured = elt('article', 'currency-card featured-coin-card');
-        featured.setAttribute('aria-label', 'GTA Coin fictional roleplay currency suggestion');
+        featured.setAttribute('aria-label', currency.name + ' roleplay currency suggestion');
         const art = elt('div', 'featured-coin-art');
         const photo = elt('img', 'featured-coin-image');
-        photo.src = 'gta-coin-art.jpg';
-        photo.alt = 'Silver GTA Coin concept with GTA COIN embossed in the metal';
+        photo.src = isGtaDemo ? 'gta-coin-art.jpg' : 'unity-coin-site.jpg';
+        photo.alt = isGtaDemo ? 'Silver GTA Coin with GTA COIN embossed' : 'UNITY Coin, black and silver metallic coin with red highlights on a white background';
         photo.width = 300;
         photo.height = 300;
         art.append(photo);
         const details = elt('div', 'featured-coin-details');
-        details.append(elt('div', 'featured-kicker', 'UNITY RP CONCEPT · FICTIONAL PROPOSAL'));
-        details.append(elt('h3', 'featured-coin-title', 'GTA Coin'));
+        details.append(elt('div', 'featured-kicker', isGtaDemo ? 'UNITY RP CONCEPT · FICTIONAL PROPOSAL' : 'NEW · UNITY COIN SUGGESTION'));
+        details.append(elt('h3', 'featured-coin-title', currency.name));
         const proposer = elt('div', 'featured-proposer', 'Proposed for ');
-        proposer.append(elt('strong', '', 'UNITY RP-inspired community'), elt('span', '', ' · Independent concept'));
+        proposer.append(elt('strong', '', 'UNITY RP-inspired community'), elt('span', '', isGtaDemo ? ' · Independent concept' : ' · Community suggestion'));
         details.append(proposer, elt('p', 'featured-description', currency.pitch));
-        details.append(elt('p', 'featured-tally-note', 'Example reaction counts for this fictional roleplay concept. These are not real player votes.'));
+        details.append(elt('p', 'featured-tally-note', isGtaDemo
+          ? 'Example reaction counts for this fictional roleplay concept. These are not real player votes.'
+          : 'New proposal. Starts with zero upvotes and zero downvotes.'));
         const buttons = elt('div', 'featured-votes');
         const up = elt('button', 'featured-vote-button upvote' + (votesGiven.has(currency.id) ? ' selected' : ''));
         up.type = 'button';
-        up.setAttribute('aria-label', 'Upvote GTA Coin');
+        up.setAttribute('aria-label', 'Upvote ' + currency.name);
         up.append(elt('span', 'vote-icon', '↑'), elt('span', 'reaction-total', numberFormat.format(currency.votes_count || 0)), elt('small', '', 'UPVOTES'));
         up.disabled = votesGiven.has(currency.id) || downVotesGiven.has(currency.id);
         up.addEventListener('click', () => castVote(currency, up));
         const down = elt('button', 'featured-vote-button downvote' + (downVotesGiven.has(currency.id) ? ' selected' : ''));
         down.type = 'button';
-        down.setAttribute('aria-label', 'Downvote GTA Coin');
+        down.setAttribute('aria-label', 'Downvote ' + currency.name);
         down.append(elt('span', 'vote-icon', '↓'), elt('span', 'reaction-total', numberFormat.format(currency.downvotes_count || 0)), elt('small', '', 'DOWNVOTES'));
         down.disabled = votesGiven.has(currency.id) || downVotesGiven.has(currency.id);
         down.addEventListener('click', () => castDownVote(currency));

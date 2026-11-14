@@ -29,3 +29,7 @@ The notification service is implemented in `api/notify-approved.js`. Only that s
 - The voting UUID limits basic repeat votes, not automated spam. Add rate limits and challenge verification before public promotion.
 - This is **not an official Rockstar Games site**. Rockstar Games and Take-Two Interactive do not operate or endorse it.
 - The Rockstar logo image is supplied as site artwork, and the current interface includes a roleplay voting header.
+
+
+## UNITY Coin preview entry
+UNITY Coin is the second featured currency with its own white-background artwork (`unity-coin-site.jpg`). It starts at exactly **0 upvotes and 0 downvotes** in preview mode. Demo votes still save locally in each visitor’s browser. The separate GTA Coin entry and its illustrative figures are unchanged.

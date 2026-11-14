@@ -93,12 +93,15 @@ $$;
 revoke all on function public.cast_vote(uuid, uuid) from public;
 grant execute on function public.cast_vote(uuid, uuid) to anon, authenticated;
 
--- OPTIONAL: seed one GTA Coin proposal in a newly configured Supabase project.
+-- OPTIONAL: seed GTA Coin and UNITY Coin proposals in a new Supabase project.
 -- Existing previously approved proposals must be reviewed separately.
 /*
 insert into public.currency_nominations (name, ticker, type, chain, pitch, status)
-values ('GTA Coin', 'GTA', 'crypto', 'Vice City Roleplay',
-'A proposed in-server currency for roleplay jobs, businesses, shopping, and trading.', 'approved')
+values
+  ('GTA Coin', 'GTA', 'crypto', 'UNITY RP-inspired economy',
+   'A proposed in-server currency for roleplay jobs, businesses, shopping, and trading.', 'approved'),
+  ('UNITY Coin', 'UNITY', 'crypto', 'UNITY RP-inspired economy',
+   'A proposed currency for roleplay jobs, player-owned shops, and trading.', 'approved')
 on conflict do nothing;
 */
 ),
