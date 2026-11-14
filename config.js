@@ -2,5 +2,6 @@
 // These values are designed to be public. NEVER put your Supabase service_role key here.
 window.VICE_CONFIG = {
   supabaseUrl: '',
-  supabaseAnonKey: ''
+  supabaseAnonKey: '',
+  approvalEmailsEnabled: false // Set true only AFTER connecting the approval webhook and email sender.
 };

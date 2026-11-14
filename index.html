@@ -26,7 +26,7 @@
         <h1 id="hero-title">YOUR SERVER.<br>YOUR <span>CURRENCY.</span></h1>
         <p class="hero-desc">Help shape the economy of GTA VI-inspired roleplay servers. Suggest a currency, explain how players could use it in-game, and back the proposals you want server teams to consider.</p>
         <div class="hero-actions">
-          <button class="btn-primary js-open-modal" type="button">Suggest a currency <span aria-hidden="true">↗</span></button>
+          <button class="btn-primary js-open-modal" type="button">Suggest a currency </button>
           <a class="btn-ghost" href="#leaderboard">Browse proposals <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -56,16 +56,16 @@
         <button class="outline-cta js-open-modal" type="button">+ Suggest a currency</button>
       </div>
       <div id="currency-list" class="currency-list" aria-live="polite"></div>
-      <div class="list-bottom"><span id="list-counter">SHOWING 1 CURRENCY</span><button class="text-link js-open-modal" type="button">Have another idea? Suggest it <span aria-hidden="true">↗</span></button></div>
+      <div class="list-bottom"><span id="list-counter">SHOWING 1 CURRENCY</span><button class="text-link js-open-modal" type="button">Have another idea? Suggest it </button></div>
     </section>
 
     <section class="callout-section" id="how-it-works">
       <div class="callout-inner">
-        <div class="callout-intro"><span class="section-kicker">ROLEPLAY ECONOMY</span><h2>Help shape<br>the <span>server.</span></h2><p>Every roleplay economy starts with a community. Propose your currency, explain its in-game purpose, and let players show their support before server teams review the ideas.</p><button class="btn-primary js-open-modal" type="button">Propose a currency <span aria-hidden="true">↗</span></button></div>
+        <div class="callout-intro"><span class="section-kicker">ROLEPLAY ECONOMY</span><h2>Help shape<br>the <span>server.</span></h2><p>Every roleplay economy starts with a community. Propose your currency, explain its in-game purpose, and let players show their support before server teams review the ideas.</p><button class="btn-primary js-open-modal" type="button">Propose a currency </button></div>
         <div class="steps" aria-label="How it works">
-          <div class="step"><span class="step-number">01</span><div><strong>Propose</strong><p>Add a currency, its ticker, and how it could work in roleplay.</p></div><span class="step-arrow" aria-hidden="true">↗</span></div>
-          <div class="step"><span class="step-number">02</span><div><strong>Support</strong><p>Vote for the currency proposals you'd use in the servers.</p></div><span class="step-arrow" aria-hidden="true">↗</span></div>
-          <div class="step"><span class="step-number">03</span><div><strong>Review</strong><p>Server teams can consider community favorites for their economies.</p></div><span class="step-arrow" aria-hidden="true">↗</span></div>
+          <div class="step"><span class="step-number">01</span><div><strong>Propose</strong><p>Add a currency, its ticker, and how it could work in roleplay.</p></div></div>
+          <div class="step"><span class="step-number">02</span><div><strong>Support</strong><p>Vote for the currency proposals you'd use in the servers.</p></div></div>
+          <div class="step"><span class="step-number">03</span><div><strong>Review</strong><p>Server teams can consider community favorites for their economies.</p></div></div>
         </div>
       </div>
     </section>
@@ -75,7 +75,7 @@
     <div class="footer-inner">
       <div class="footer-brand"><span>VICE TENDER<small>ROLEPLAY CURRENCY PORTAL</small></span></div>
       <div class="footer-links"><a href="#top">Home</a><a href="#leaderboard">Proposals</a><a href="#how-it-works">How it works</a></div>
-      <div class="footer-bottom"><p>Community roleplay currency portal, independent of Rockstar Games and Take-Two Interactive. This is not an official Rockstar Games service. Server administrators decide which proposals, if any, to use in their own roleplay communities. GTA Coin's displayed reaction totals are fictional demonstration values, not real player votes. Until a shared database is connected, submissions and votes stay in each visitor's browser.</p><a href="#top">Back to top ↑</a></div>
+      <div class="footer-bottom"><p>Community roleplay currency portal, independent of Rockstar Games and Take-Two Interactive. This is not an official Rockstar Games service. Server administrators decide which proposals, if any, to use in their own roleplay communities. GTA Coin's displayed reaction totals are fictional demonstration values, not real player votes. Until a shared database is connected, submissions and votes stay in each visitor's browser. Submission emails are private and used only for approval notifications once that service is enabled.</p><a href="#top">Back to top ↑</a></div>
     </div>
   </footer>
 
@@ -90,9 +90,10 @@
         <label class="field">Blockchain / Network <small>(optional)</small><input name="chain" maxlength="35" placeholder="e.g. Solana"></label>
         <label class="field wide">Contract address <small>(optional)</small><input name="contract_address" maxlength="160" placeholder="Token contract address"></label>
         <label class="field wide">How should players use it in roleplay? <span>*</span><textarea name="pitch" maxlength="280" minlength="12" rows="3" required placeholder="Explain how players would earn, spend, or trade it in-game..."></textarea><span class="char-count"><span id="pitch-count">0</span>/280</span></label>
+        <label class="field wide">Notification email <span>*</span><input name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" maxlength="254" required placeholder="you@example.com"><small class="email-help">Only used to contact you if your proposal is approved for voting. Your address stays private.</small></label>
       </div>
-      <div class="form-bottom"><span id="form-error" role="alert"></span><button type="submit" class="btn-primary">Send proposal <span aria-hidden="true">↗</span></button></div>
-      <p class="fine-print" id="form-footnote">Your proposal saves in this browser until the shared submission database is connected.</p>
+      <div class="form-bottom"><span id="form-error" role="alert"></span><button type="submit" class="btn-primary">Send proposal </button></div>
+      <p class="fine-print" id="form-footnote">Preview mode: submissions stay in your browser. We do not store or send your email in preview mode. Approval emails require the shared database and email service to be configured.</p>
     </form>
   </dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>

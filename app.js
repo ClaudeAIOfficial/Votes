@@ -220,6 +220,11 @@
     const chain = form.elements.chain.value.trim();
     const contract_address = form.elements.contract_address.value.trim();
     const pitch = form.elements.pitch.value.trim();
+    const email = form.elements.email.value.trim().toLowerCase();
+    if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      $('#form-error').textContent = 'Enter a valid email address for approval updates.';
+      return;
+    }
     if (!name || !ticker || pitch.length < 12 || !['crypto', 'memecoin', 'fiat'].includes(type)) {
       $('#form-error').textContent = 'Enter a name, ticker, and a pitch of at least 12 characters.';
       return;
@@ -235,14 +240,20 @@
     const payload = { name, ticker, type, chain: chain || null, contract_address: contract_address || null, pitch };
     try {
       if (live) {
-        const res = await fetch(`${baseUrl}/rest/v1/currency_nominations`, {
-          method: 'POST', headers: { ...apiHeaders(true), Prefer: 'return=minimal' }, body: JSON.stringify(payload)
+        const res = await fetch(`${baseUrl}/rest/v1/rpc/submit_nomination`, {
+          method: 'POST', headers: apiHeaders(true),
+          body: JSON.stringify({
+            p_name: name, p_ticker: ticker, p_type: type, p_chain: payload.chain,
+            p_contract_address: payload.contract_address, p_pitch: pitch, p_email: email
+          })
         });
         if (!res.ok) {
           const info = await res.json().catch(() => ({}));
           throw new Error(info.code === '23505' ? 'This currency was already submitted.' : 'Submission failed. Please check your details and try again.');
         }
-        announce(`${name} proposed! It will appear after server review.`);
+        announce(config.approvalEmailsEnabled === true
+          ? `${name} submitted! You'll receive an email if it is approved for voting.`
+          : `${name} submitted for review. Email alerts are not enabled yet.`);
       } else {
         const custom = storedJSON('demo-nominations', []);
         const nomination = { ...payload, id: 'demo-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6), votes_count: 0, created_at: new Date().toISOString() };
@@ -250,7 +261,7 @@
         storeJSON('demo-nominations', custom);
         currencies.push(nomination);
         render();
-        announce(`${name} proposal saved in this browser!`);
+        announce(`${name} saved locally. No email notification will be sent in preview mode.`);
       }
       modal.close();
       form.reset(); $('#pitch-count').textContent = '0';
@@ -264,7 +275,9 @@
   });
 
   if (live) {
-    $('#form-footnote').textContent = 'Your roleplay currency proposal enters a moderation queue before appearing publicly.';
+    $('#form-footnote').textContent = config.approvalEmailsEnabled === true
+      ? 'If moderators approve your currency for voting, we will email you once. Your address remains private.'
+      : 'Your proposal enters a review queue. Approval notification emails are not enabled yet.';
     listEl.append(elt('div', 'empty-state', 'LOADING PROPOSALS...'));
     fetchLive().catch((err) => {
       listEl.replaceChildren();
