@@ -6,12 +6,12 @@
   const baseUrl = String(config.supabaseUrl || '').replace(/\/+$/, '');
   const storagePrefix = 'vicetender-v1:';
   const sampleCurrencies = [
-    { id: 'demo-doge', name: 'Dogecoin', ticker: 'DOGE', type: 'memecoin', chain: 'Dogecoin', pitch: 'The original internet dog money. It already feels like it belongs in the streets of Leonida.', votes_count: 842, created_at: '2026-11-10T12:00:00Z' },
-    { id: 'demo-btc', name: 'Bitcoin', ticker: 'BTC', type: 'crypto', chain: 'Bitcoin', pitch: 'Picture ATMs, shady beachside deals, and an entire economy running on Bitcoin.', votes_count: 716, created_at: '2026-11-09T12:00:00Z' },
-    { id: 'demo-pepe', name: 'Pepe', ticker: 'PEPE', type: 'memecoin', chain: 'Ethereum', pitch: 'An internet legend that could make for the funniest in-game meme currency.', votes_count: 591, created_at: '2026-11-08T12:00:00Z' },
-    { id: 'demo-sol', name: 'Solana', ticker: 'SOL', type: 'crypto', chain: 'Solana', pitch: 'Fast transactions, chaotic memecoins, and a very Leonida kind of energy.', votes_count: 437, created_at: '2026-11-07T12:00:00Z' },
-    { id: 'demo-usd', name: 'US Dollar', ticker: 'USD', type: 'fiat', chain: '', pitch: 'Sometimes you just want to walk into a store with a stack of actual cash.', votes_count: 308, created_at: '2026-11-06T12:00:00Z' },
-    { id: 'demo-eth', name: 'Ethereum', ticker: 'ETH', type: 'crypto', chain: 'Ethereum', pitch: 'Smart contracts and questionable side hustles: the perfect combination.', votes_count: 264, created_at: '2026-11-05T12:00:00Z' }
+    { id: 'demo-doge', name: 'Dogecoin', ticker: 'DOGE', type: 'memecoin', chain: 'Dogecoin', pitch: 'A playful currency for player-owned businesses, community events, and jobs in Vice City roleplay.', votes_count: 0, created_at: '2026-11-10T12:00:00Z' },
+    { id: 'demo-btc', name: 'Bitcoin', ticker: 'BTC', type: 'crypto', chain: 'Bitcoin', pitch: 'A high-value digital currency for player trading and in-character financial storylines.', votes_count: 0, created_at: '2026-11-09T12:00:00Z' },
+    { id: 'demo-pepe', name: 'Pepe', ticker: 'PEPE', type: 'memecoin', chain: 'Ethereum', pitch: 'A meme currency for player-led markets and roleplay community events.', votes_count: 0, created_at: '2026-11-08T12:00:00Z' },
+    { id: 'demo-sol', name: 'Solana', ticker: 'SOL', type: 'crypto', chain: 'Solana', pitch: 'A fast digital economy for player transactions and in-server trading.', votes_count: 0, created_at: '2026-11-07T12:00:00Z' },
+    { id: 'demo-usd', name: 'US Dollar', ticker: 'USD', type: 'fiat', chain: '', pitch: 'A familiar cash option for everyday in-character purchases, wages, and businesses.', votes_count: 0, created_at: '2026-11-06T12:00:00Z' },
+    { id: 'demo-eth', name: 'Ethereum', ticker: 'ETH', type: 'crypto', chain: 'Ethereum', pitch: 'An alternative digital asset for in-character trading and fictional businesses.', votes_count: 0, created_at: '2026-11-05T12:00:00Z' }
   ];
 
   const $ = (selector) => document.querySelector(selector);
@@ -87,7 +87,7 @@
     listEl.replaceChildren();
     if (selected.length === 0) {
       const empty = elt('div', 'empty-state');
-      empty.append(elt('strong', '', 'NO CURRENCIES FOUND.'), elt('span', '', search ? 'Try another search or submit a new one.' : 'Nothing in this category yet. Be the first to nominate one.'));
+      empty.append(elt('strong', '', 'NO PROPOSALS FOUND.'), elt('span', '', search ? 'Try another search or submit a new one.' : 'No proposals in this category yet. Suggest the first one.'));
       listEl.append(empty);
     }
     for (let index = 0; index < selected.length; index++) {
@@ -210,7 +210,7 @@
           const info = await res.json().catch(() => ({}));
           throw new Error(info.code === '23505' ? 'This currency was already submitted.' : 'Submission failed. Please check your details and try again.');
         }
-        announce(`${name} submitted! It will appear after moderation.`);
+        announce(`${name} proposed! It will appear after server review.`);
       } else {
         const custom = storedJSON('demo-nominations', []);
         const nomination = { ...payload, id: 'demo-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6), votes_count: 0, created_at: new Date().toISOString() };
@@ -221,7 +221,7 @@
         document.querySelectorAll('.filter').forEach((el) => el.classList.toggle('active', el.dataset.filter === 'all'));
         $('#sort').value = 'newest'; $('#search').value = '';
         render();
-        announce(`${name} added to your local preview!`);
+        announce(`${name} proposal saved in this browser!`);
       }
       modal.close();
       form.reset(); $('#pitch-count').textContent = '0';
@@ -235,8 +235,8 @@
   });
 
   if (live) {
-    $('#form-footnote').textContent = 'Your submission enters a moderation queue before appearing on the public leaderboard.';
-    listEl.append(elt('div', 'empty-state', 'LOADING CURRENCIES...'));
+    $('#form-footnote').textContent = 'Your roleplay currency proposal enters a moderation queue before appearing publicly.';
+    listEl.append(elt('div', 'empty-state', 'LOADING PROPOSALS...'));
     fetchLive().catch((err) => {
       listEl.replaceChildren();
       const error = elt('div', 'empty-state');

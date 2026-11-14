@@ -1,10 +1,10 @@
-# Vice Tender
+# Vice Tender | Roleplay Currency Portal
 
-An unofficial GTA VI currency nomination and voting website. The interface includes a leaderboard, category filters, search, a nomination dialog, and one vote per currency per browser UUID.
+A community-run website for suggesting and voting on currencies that roleplay server administrators could adopt for their fictional in-game economies. The interface includes a leaderboard, category filters, search, a nomination dialog, and one vote per currency per browser UUID.
 
 ## Preview immediately
 
-Open `index.html` in Chrome or upload this folder to a static host. Preview mode works without any backend. Six example currencies appear with **fictional demo vote counts** clearly labeled as a preview. New nominations and votes are stored in **your current browser only**. They are not visible to other visitors.
+Open `index.html` in Chrome or upload this folder to a static host. Preview mode works without any backend. Six sample currency proposals appear with **zero starting votes**. They are examples, not real community results. New nominations and votes are stored in **your current browser only**. They are not visible to other visitors.
 
 ## Make nominations and votes shared across visitors
 
@@ -19,11 +19,11 @@ The sample seed statements at the bottom of `supabase.sql` are optional. They cr
 
 ## Important production notes
 
-- This is an independent fan project, **not affiliated with Rockstar Games or Take-Two Interactive**. The page says so clearly.
+- This is a community roleplay portal and **not an official Rockstar Games service**. Rockstar Games and Take-Two Interactive do not endorse it. A roleplay server must make its own adoption decisions.
 - The app never collects wallets, asks visitors to connect a wallet, or requires token purchases. Optional contract addresses are text only.
 - Browser UUID voting limits casual repeat voting but is **not bot protection**. Before promoting the site publicly, add server-side rate limiting and a challenge such as Cloudflare Turnstile, plus submission moderation.
 - Supabase row-level security allows anonymous visitors to read approved entries and create pending nominations, but only the protected `cast_vote` database function can increment vote counts.
-- The static code includes no copied GTA logos, Rockstar artwork, game screenshots, or third-party assets.
+- The site contains a user-supplied Rockstar-logo PNG for roleplay-themed branding. The website still identifies its independence from Rockstar Games in the footer.
 
 ## Customize
 
