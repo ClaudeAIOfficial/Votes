@@ -94,7 +94,7 @@
         art.append(photo);
         const details = elt('div', 'featured-coin-details');
         details.append(elt('div', 'featured-kicker', 'UNITY RP CONCEPT · FICTIONAL PROPOSAL'));
-        details.append(elt('h3', 'featured-coin-title', 'GTA Coin'), elt('div', 'featured-ticker', '$GTA'));
+        details.append(elt('h3', 'featured-coin-title', 'GTA Coin'));
         const proposer = elt('div', 'featured-proposer', 'Proposed for ');
         proposer.append(elt('strong', '', 'UNITY RP-inspired community'), elt('span', '', ' · Independent concept'));
         details.append(proposer, elt('p', 'featured-description', currency.pitch));
